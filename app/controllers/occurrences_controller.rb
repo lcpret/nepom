@@ -1,7 +1,19 @@
 class OccurrencesController < ApplicationController
 
   def index
-    @occurrences = Occurrence.all
+    if params[:query_ship]
+      @occurrences = Occurrence.search_by_ship(params[:query_ship])
+    else
+      @occurrences = Occurrence.all
+    end
+
+    # @markers = @occurrences.map do |occurrence|
+    #   {
+    #     lat: occurrence.latitude,
+    #     lng: occurrence.longitude,
+    #     info_window: render_to_string(partial: "info_window", locals: { occurrence: occurrence })
+    #   }
+    # end
   end
 
   def show
@@ -21,7 +33,6 @@ class OccurrencesController < ApplicationController
       render :new
     end
   end
-
 
   private
   def occurrence_params

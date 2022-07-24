@@ -77,4 +77,7 @@ group :test do
   gem "webdrivers"
 end
 
-gem "sassc-rails" # Uncomment this line
+# Gemfile
+gem 'faker'
+gem 'geocoder'
+gem 'pg_search', '~> 2.3.0'
